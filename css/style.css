@@ -88,8 +88,11 @@ body {
 }
 .btn-primary  { background: var(--green-main); color: var(--white); }
 .btn-primary:hover { background: var(--green-dark); transform: translateY(-2px); box-shadow: var(--shadow-md); }
-.btn-outline  { background: transparent; color: var(--green-main); border-color: var(--green-main); }
-.btn-outline:hover { background: var(--green-main); color: var(--white); transform: translateY(-2px); }
+.btn-outline  { background: transparent; color: var(--white); border-color: rgba(255,255,255,0.8); }
+.btn-outline:hover { background: rgba(255,255,255,0.2); color: var(--white); border-color: var(--white); transform: translateY(-2px); }
+/* Green outline variant — used outside the hero */
+.btn-outline-green { background: transparent; color: var(--green-main); border-color: var(--green-main); }
+.btn-outline-green:hover { background: var(--green-main); color: var(--white); transform: translateY(-2px); }
 .btn-white    { background: var(--white); color: var(--green-main); }
 .btn-white:hover { background: var(--green-pale); transform: translateY(-2px); }
 .btn-sm       { padding: 10px 20px; font-size: 0.85rem; }
@@ -125,8 +128,8 @@ body {
 }
 .logo-paw { font-size: 1.8rem; }
 .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
-.logo-name { font-weight: 700; font-size: 1.1rem; color: var(--green-dark); }
-.logo-sub  { font-size: 0.7rem; color: var(--green-light); letter-spacing: 0.05em; text-transform: uppercase; }
+.logo-name { font-weight: 700; font-size: 1.1rem; color: var(--white); text-shadow: 0 1px 4px rgba(0,0,0,0.3); }
+.logo-sub  { font-size: 0.7rem; color: rgba(255,255,255,0.85); letter-spacing: 0.05em; text-transform: uppercase; }
 
 .nav-links {
   display: flex;
@@ -136,21 +139,29 @@ body {
 }
 .nav-link {
   text-decoration: none;
-  color: var(--text-dark);
+  color: rgba(255,255,255,0.9);
   font-weight: 500;
   font-size: 0.9rem;
   padding: 8px 12px;
   border-radius: var(--radius-sm);
   transition: var(--transition);
 }
-.nav-link:hover { color: var(--green-main); background: var(--green-pale); }
+.nav-link:hover { color: var(--white); background: rgba(255,255,255,0.15); }
 .nav-cta {
-  background: var(--green-main);
-  color: var(--white) !important;
+  background: var(--white);
+  color: var(--green-dark) !important;
   padding: 10px 20px;
   border-radius: 50px;
 }
-.nav-cta:hover { background: var(--green-dark) !important; }
+.nav-cta:hover { background: var(--green-pale) !important; }
+
+/* When scrolled — switch to dark text */
+#navbar.scrolled .nav-link { color: var(--text-dark); }
+#navbar.scrolled .nav-link:hover { color: var(--green-main); background: var(--green-pale); }
+#navbar.scrolled .nav-cta { background: var(--green-main); color: var(--white) !important; }
+#navbar.scrolled .nav-cta:hover { background: var(--green-dark) !important; }
+#navbar.scrolled .logo-name { color: var(--green-dark); }
+#navbar.scrolled .logo-sub  { color: var(--green-light); }
 
 .hamburger {
   display: none;
