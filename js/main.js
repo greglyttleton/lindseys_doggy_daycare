@@ -53,21 +53,15 @@ function renderGallery(photos) {
   grid.style.display  = '';
   if (empty) empty.style.display = 'none';
 
-  // Build gallery — first photo is large
+  // Build gallery — first photo is large, items fade in with stagger
   grid.innerHTML = photos.map((photo, i) => `
-    <div class="gallery-item ${i === 0 ? 'gallery-item-large' : ''}">
-      <img src="${photo.src}" alt="${photo.caption || 'Dog at Lindsey\\'s Doggy Daycare'}" loading="lazy" />
+    <div class="gallery-item ${i === 0 ? 'gallery-item-large' : ''}" style="animation: fadeInUp 0.5s ease ${(i * 0.05).toFixed(2)}s both;">
+      <img src="/${photo.src}" alt="${photo.caption || 'Dog at Lindsey\'s Doggy Daycare'}" />
       <div class="gallery-overlay">
         <span>${photo.caption || '🐾'}</span>
       </div>
     </div>
   `).join('');
-
-  // Re-observe new gallery items for scroll animation
-  grid.querySelectorAll('.gallery-item').forEach(el => {
-    el.style.opacity = '0';
-    revealObserver.observe(el);
-  });
 }
 
 
