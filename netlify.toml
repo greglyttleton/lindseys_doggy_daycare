@@ -1,0 +1,48 @@
+[build]
+  # No build step needed — this is a plain HTML/CSS/JS site
+  publish = "."
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# ─── Netlify Identity ─────────────────────────────────────────────────────────
+# Required for Decap CMS login
+[[plugins]]
+  package = "@netlify/plugin-emails"
+
+# ─── Headers ──────────────────────────────────────────────────────────────────
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Cache static assets aggressively, but never cache JSON data files
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/cms-data/*"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+# ─── Redirects ────────────────────────────────────────────────────────────────
+# Send all routes back to index.html (SPA-style)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

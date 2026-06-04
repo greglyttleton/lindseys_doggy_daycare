@@ -1,0 +1,123 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# ─── Media uploads ───────────────────────────────────────────────
+# New photos uploaded via the admin panel will be saved here
+media_folder: "images/gallery"
+public_folder: "/images/gallery"
+
+# ─── Site info ───────────────────────────────────────────────────
+site_url: https://lindseysdoggydaycare.co.uk
+display_url: https://lindseysdoggydaycare.co.uk
+logo_url: https://lindseysdoggydaycare.co.uk/images/gallery/website%20photos/PXL_20250629_090836599.PORTRAIT.jpg
+
+locale: en
+
+# ─── Collections ─────────────────────────────────────────────────
+collections:
+
+  # ╔═══════════════════════╗
+  # ║  📷  GALLERY PHOTOS   ║
+  # ╚═══════════════════════╝
+  - name: gallery
+    label: "📷 Gallery Photos"
+    description: "Add, remove or reorder the photos that appear in your gallery. Drag to reorder. New photos you upload here will appear on the website straight away."
+    files:
+      - name: photos
+        label: "Manage Gallery Photos"
+        file: cms-data/gallery.json
+        fields:
+          - name: photos
+            label: "Your Photos"
+            label_singular: "Photo"
+            widget: list
+            summary: "{{fields.caption}}"
+            collapsed: false
+            minimize_collapsed: true
+            fields:
+              - label: "📸 Upload Photo"
+                name: src
+                widget: image
+                media_folder: /images/gallery
+                public_folder: /images/gallery
+                hint: "Click 'Choose an image' to upload from your phone or computer (JPG or PNG recommended)"
+              - label: "Caption"
+                name: caption
+                widget: string
+                required: false
+                default: ""
+                hint: "Optional short description shown on hover, e.g. 'Beach walk adventures 🏖️'"
+
+  # ╔═════════════════════════╗
+  # ║  ⚙️  SITE SETTINGS     ║
+  # ╚═════════════════════════╝
+  - name: settings
+    label: "⚙️ Site Settings"
+    description: "Update your business details, prices, and about section. Changes are applied live within a few minutes."
+    files:
+      - name: business
+        label: "📋 Business Details"
+        file: cms-data/settings.json
+        fields:
+
+          - label: "Phone Number"
+            name: phoneDisplay
+            widget: string
+            hint: "Shown on the website, e.g. 07908 294 566"
+
+          - label: "Email Address"
+            name: email
+            widget: string
+            hint: "Booking enquiries go to this address"
+
+          - label: "Address"
+            name: address
+            widget: string
+            hint: "Full address shown on the contact page"
+
+          - label: "Opening Hours"
+            name: hours
+            widget: string
+            hint: "e.g. Open 7 days a week"
+
+          - label: "Facebook Page URL"
+            name: facebook
+            widget: string
+
+          - label: "Daycare Price"
+            name: daycarePrice
+            widget: string
+            default: "£30"
+            hint: "e.g. £30  (just the amount — shown on pricing cards)"
+
+          - label: "Overnight Boarding Price"
+            name: overnightPrice
+            widget: string
+            default: "£40"
+            hint: "e.g. £40"
+
+          - label: "Google Review Count"
+            name: googleReviews
+            widget: string
+            default: "21"
+            hint: "Total number of Google reviews — update when you get new ones"
+
+          - label: "About Section — Title"
+            name: aboutTitle
+            widget: string
+
+          - label: "About Section — First Paragraph"
+            name: aboutText1
+            widget: text
+            hint: "The first paragraph on the About section"
+
+          - label: "About Section — Second Paragraph"
+            name: aboutText2
+            widget: text
+            hint: "The second paragraph on the About section"
+
+          - label: "Pricing Note (multi-dog message)"
+            name: pricingNote
+            widget: text
+            hint: "Small note shown below the pricing cards"
