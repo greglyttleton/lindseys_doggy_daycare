@@ -409,7 +409,8 @@
             </iframe>
           </div>
         </div>
-        <form class="contact-form" id="contact-form" onsubmit="handleSubmit(event)">
+        <form class="contact-form" id="contact-form" name="contact" data-netlify="true" onsubmit="handleSubmit(event)">
+          <input type="hidden" name="form-name" value="contact" />
           <div class="form-group">
             <label for="name">Your Name *</label>
             <input type="text" id="name" name="name" placeholder="e.g. Jane Smith" required />

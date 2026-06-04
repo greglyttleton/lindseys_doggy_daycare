@@ -213,29 +213,29 @@ function handleSubmit(e) {
   btn.disabled    = true;
   btn.textContent = 'Sending…';
 
-  const name    = form.name.value;
-  const phone   = form.phone.value;
-  const email   = form.email.value;
-  const dog     = form['dog-name'].value;
-  const service = form.service.value;
-  const dates   = form.dates.value;
-  const message = form.message.value;
+  const formData = new FormData(form);
 
-  const subject = encodeURIComponent(`Booking Enquiry – ${name} (${dog})`);
-  const body    = encodeURIComponent(
-    `Name: ${name}\nPhone: ${phone}\nEmail: ${email}\n\nDog: ${dog}\nService: ${service}\nDates: ${dates}\n\nAdditional info:\n${message}`
-  );
-
-  // Open mail client
-  window.location.href = `mailto:lindsey@lindseysdoggydaycare.co.uk?subject=${subject}&body=${body}`;
-
-  // Show success
-  setTimeout(() => {
-    success.style.display = 'block';
+  fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams(formData).toString()
+  })
+  .then(response => {
+    if (response.ok) {
+      success.style.display = 'block';
+      form.reset();
+    } else {
+      throw new Error('Form submission failed');
+    }
+  })
+  .catch(error => {
+    console.error(error);
+    alert("Oops! There was a problem submitting your form. Please try again or call/email us directly.");
+  })
+  .finally(() => {
     btn.textContent = 'Send Enquiry 🐾';
     btn.disabled = false;
-    form.reset();
-  }, 800);
+  });
 }
 
 // Smooth scroll for all anchor links
