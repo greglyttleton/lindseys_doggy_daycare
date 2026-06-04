@@ -119,7 +119,8 @@ function applyConfig() {
     a.href = `mailto:${c.email}`;
     if (a.textContent.includes('@')) a.textContent = c.email;
   });
-  set('a[href^="tel"] ~ span, .contact-detail span', c.address);
+  set('.contact-address-span', c.address);
+  set('.contact-hours-span', c.hours);
   set('.footer-contact p:last-child', c.address.split(',').slice(-2).join(','));
 
   // Links
