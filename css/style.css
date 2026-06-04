@@ -713,3 +713,57 @@ textarea { resize: vertical; }
   to   { opacity: 1; transform: translateY(0); }
 }
 .fade-in-up { animation: fadeInUp 0.6s ease forwards; }
+
+/* ---- TERMS & CONDITIONS ---- */
+.terms-section {
+  padding: 140px 0 96px;
+  background: var(--off-white);
+  min-height: 80vh;
+}
+.terms-card {
+  background: var(--white);
+  padding: 48px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  max-width: 800px;
+  margin: 0 auto;
+}
+.terms-card h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+.terms-meta {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--green-pale);
+  padding-bottom: 16px;
+}
+.terms-content h2 {
+  font-size: 1.3rem;
+  color: var(--green-dark);
+  margin: 32px 0 16px;
+}
+.terms-content p {
+  color: var(--text-mid);
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+.terms-content ul {
+  margin-bottom: 24px;
+  padding-left: 20px;
+  color: var(--text-mid);
+}
+.terms-content li {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .terms-section { padding: 100px 0 64px; }
+  .terms-card { padding: 24px; border-radius: var(--radius-md); }
+}
