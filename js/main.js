@@ -275,3 +275,20 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+// Date picker validation: set min attributes and keep start/end in sync
+const startDateInput = document.getElementById('start-date');
+const endDateInput = document.getElementById('end-date');
+if (startDateInput && endDateInput) {
+  const today = new Date().toISOString().split('T')[0];
+  startDateInput.min = today;
+  endDateInput.min = today;
+
+  startDateInput.addEventListener('change', () => {
+    endDateInput.min = startDateInput.value;
+    if (endDateInput.value && endDateInput.value < startDateInput.value) {
+      endDateInput.value = startDateInput.value;
+    }
+  });
+}
+
