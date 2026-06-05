@@ -93,11 +93,18 @@ function applyConfig() {
   set('.logo-sub',   c.businessSub);
   set('.logo-paw',   c.logoEmoji);
 
-  // Hero
-  set('.hero-badge', c.heroBadge);
+  const badgeLinks = document.querySelectorAll('.hero-badge-link');
+  if (badgeLinks[0]) {
+    badgeLinks[0].textContent = `⭐ 5.0 (${c.googleReviews} Google Reviews)`;
+  }
   const h1 = document.querySelector('.hero-content h1');
   if (h1) h1.innerHTML = c.tagline.replace(/ /g, ' ');
   set('.hero-content > p', c.description);
+
+  const overallRatingText = document.querySelector('.overall-rating span');
+  if (overallRatingText) {
+    overallRatingText.innerHTML = `5.0 · ${c.googleReviews} Google Reviews &nbsp;·&nbsp; 100% Recommended on Facebook`;
+  }
 
   // Hero stats
   const statNums   = document.querySelectorAll('.stat-num');
