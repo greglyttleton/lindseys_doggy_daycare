@@ -138,6 +138,18 @@ function applyConfig() {
   set('.contact-hours-span', c.hours);
   set('.footer-contact p:last-child', c.address.split(',').slice(-2).join(','));
 
+  // Prices
+  const formatPrice = (price) => {
+    if (!price) return '';
+    return price.toString().trim().startsWith('£') ? price : '£' + price;
+  };
+  if (c.services[0] && c.services[0].price) {
+    set('.daycare-price-span', formatPrice(c.services[0].price));
+  }
+  if (c.services[1] && c.services[1].price) {
+    set('.boarding-price-span', formatPrice(c.services[1].price));
+  }
+
   // Links
   setHref('a[href*="facebook"]', c.facebook);
   setHref('a[href*="wa.me"], .whatsapp-float', c.whatsapp);
