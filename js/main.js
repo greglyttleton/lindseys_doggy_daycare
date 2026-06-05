@@ -54,14 +54,21 @@ function renderGallery(photos) {
   if (empty) empty.style.display = 'none';
 
   // Build gallery — first photo is large, items fade in with stagger
-  grid.innerHTML = photos.map((photo, i) => `
-    <div class="gallery-item ${i === 0 ? 'gallery-item-large' : ''}" style="animation: fadeInUp 0.5s ease ${(i * 0.05).toFixed(2)}s both;">
-      <img src="/${photo.src}" alt="${photo.caption || 'Dog at Lindsey\'s Doggy Daycare'}" />
-      <div class="gallery-overlay">
-        <span>${photo.caption || '🐾'}</span>
+  grid.innerHTML = photos.map((photo, i) => {
+    const width = i === 0 ? 800 : 400;
+    const cleanSrc = photo.src.startsWith('/') ? photo.src : '/' + photo.src;
+    const src = `/.netlify/images?url=${cleanSrc}&w=${width}&fm=webp&q=80`;
+    return `
+      <div class="gallery-item ${i === 0 ? 'gallery-item-large' : ''}" style="animation: fadeInUp 0.5s ease ${(i * 0.05).toFixed(2)}s both;">
+        <img src="${src}" alt="${photo.caption || 'Dog at Lindsey\'s Doggy Daycare'}" />
+        <div class="gallery-overlay">
+          <span>${photo.caption || '🐾'}</span>
+        </div>
       </div>
-    </div>
-  `).join('');
+    `;
+  }).join('');
+
+  applyLocalImageFallback();
 }
 
 
@@ -133,6 +140,25 @@ function applyConfig() {
 
   // Pricing note
   set('.pricing-note p', c.pricingNote);
+
+  // Apply local fallback
+  applyLocalImageFallback();
+}
+
+function applyLocalImageFallback() {
+  const isLocal = window.location.hostname === 'localhost' || 
+                  window.location.hostname === '127.0.0.1' || 
+                  window.location.protocol === 'file:';
+  if (isLocal) {
+    document.querySelectorAll('img').forEach(img => {
+      const src = img.getAttribute('src') || '';
+      if (src.startsWith('/.netlify/images')) {
+        const urlParams = new URLSearchParams(src.split('?')[1]);
+        const originalUrl = urlParams.get('url');
+        if (originalUrl) img.src = originalUrl;
+      }
+    });
+  }
 }
 
 document.addEventListener('DOMContentLoaded', loadCMSData);
