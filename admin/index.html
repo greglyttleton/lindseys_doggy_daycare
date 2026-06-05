@@ -76,6 +76,59 @@
         }, 400);
       }
     });
+
+    // Custom Live Gallery Preview for Lindsey
+    const GalleryPreview = createClass({
+      render: function() {
+        const entry = this.props.entry;
+        const photos = entry.getIn(['data', 'photos']);
+        const photosList = photos ? photos.toJS() : [];
+
+        const elements = photosList.map((photo, index) => {
+          const src = photo.src ? this.props.getAsset(photo.src).toString() : '';
+          return h('div', { 
+            key: index,
+            style: {
+              display: 'inline-block',
+              width: '120px',
+              margin: '8px',
+              padding: '8px',
+              border: '1px solid #e5e9e6',
+              borderRadius: '8px',
+              textAlign: 'center',
+              backgroundColor: '#fff',
+              boxShadow: '0 2px 8px rgba(45,134,83,0.08)'
+            }
+          },
+            h('img', { 
+              src: src, 
+              style: { width: '100%', height: '90px', objectFit: 'cover', borderRadius: '6px' } 
+            }),
+            h('div', { 
+              style: { 
+                fontSize: '11px', 
+                fontWeight: '500',
+                color: '#2d8653', 
+                marginTop: '6px', 
+                overflow: 'hidden', 
+                textOverflow: 'ellipsis', 
+                whiteSpace: 'nowrap' 
+              } 
+            }, photo.caption || '🐾')
+          );
+        });
+
+        return h('div', { 
+          style: { padding: '24px', backgroundColor: '#f0faf4', minHeight: '100vh', fontFamily: "sans-serif" } 
+        },
+          h('h1', { style: { color: '#1e5c35', fontSize: '22px', fontWeight: '700', marginBottom: '8px' } }, '🐾 Gallery Live Preview'),
+          h('p', { style: { color: '#6b8872', fontSize: '13px', marginBottom: '20px' } }, 'This shows how your photos look on the website. Drag to reorder them on the left:'),
+          h('div', { style: { display: 'flex', flexWrap: 'wrap', gap: '8px' } }, elements)
+        );
+      }
+    });
+
+    CMS.registerPreviewTemplate('gallery', GalleryPreview);
   </script>
 </body>
 </html>
