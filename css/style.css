@@ -488,9 +488,9 @@ body {
   transition: var(--transition);
 }
 .testimonial-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-.testimonial-stars { color: var(--gold); font-size: 1.1rem; margin-bottom: 16px; letter-spacing: 2px; display: block; }
+.testimonial-stars { color: var(--gold); font-size: 1.1rem; margin-bottom: 16px; letter-spacing: 2px; display: inline-block; }
 a.testimonial-stars { text-decoration: none; cursor: pointer; transition: var(--transition); }
-a.testimonial-stars:hover { text-shadow: 0 0 8px rgba(245,166,35,0.7); transform: scale(1.05); display: inline-block; }
+a.testimonial-stars:hover { text-shadow: 0 0 8px rgba(245,166,35,0.7); transform: scale(1.05); }
 .testimonial-card p { color: var(--text-mid); font-size: 0.95rem; line-height: 1.7; margin-bottom: 24px; font-style: italic; }
 .testimonial-author { display: flex; align-items: center; gap: 12px; }
 .author-avatar {
