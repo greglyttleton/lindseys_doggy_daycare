@@ -64,5 +64,18 @@
   <!-- Decap CMS (formerly Netlify CMS) -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 
+  <script>
+    // Hide the loading screen once Decap CMS has fully loaded
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('cms-loading');
+      if (loader) {
+        loader.style.transition = 'opacity 0.4s ease';
+        loader.style.opacity = '0';
+        setTimeout(() => {
+          loader.style.display = 'none';
+        }, 400);
+      }
+    });
+  </script>
 </body>
 </html>
