@@ -10,7 +10,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://lindseysdoggydaycare.co.uk" />
   <!-- Netlify Identity (for CMS login) -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
@@ -46,7 +46,11 @@
   <!-- Hero -->
   <section id="home" class="hero">
     <div class="hero-overlay"></div>
-    <img src="/.netlify/images?url=/images/hero.jpg&w=1200&fm=webp&q=80" alt="Happy dogs at Lindsey's Doggy Daycare" class="hero-img" />
+    <img src="/.netlify/images?url=/images/hero.jpg&w=1200&fm=webp&q=70" 
+         srcset="/.netlify/images?url=/images/hero.jpg&w=600&fm=webp&q=70 600w, 
+                 /.netlify/images?url=/images/hero.jpg&w=1200&fm=webp&q=70 1200w" 
+         sizes="100vw"
+         alt="Happy dogs at Lindsey's Doggy Daycare" class="hero-img" />
     <div class="hero-content">
       <div class="hero-badge">
         <a href="https://www.google.com/maps/place/Lindsey's+Doggy+Daycare/@53.7788816,-3.0533049,17z/data=!3m2!1e3!4b1!4m6!3m5!1s0x487b478292844925:0xbb24bb6f4de60a89!8m2!3d53.7788816!4d-3.0533049!16s%2Fg%2F11mclmn7ft" target="_blank" rel="noopener" class="hero-badge-link">⭐ 5.0 Google Reviews</a>
@@ -74,7 +78,11 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-image-wrap">
-          <img src="/.netlify/images?url=/images/about.jpg&w=600&fm=webp&q=80" alt="Lindsey with dogs" class="about-img" />
+          <img src="/.netlify/images?url=/images/about.jpg&w=600&fm=webp&q=70" 
+               srcset="/.netlify/images?url=/images/about.jpg&w=400&fm=webp&q=70 400w, 
+                       /.netlify/images?url=/images/about.jpg&w=600&fm=webp&q=70 600w" 
+               sizes="(max-width: 768px) 100vw, 500px"
+               alt="Lindsey with dogs" class="about-img" />
           <div class="about-badge">
             <span>❤️</span>
             <p>Passionate about dogs since day one</p>

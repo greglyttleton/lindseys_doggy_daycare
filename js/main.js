@@ -55,9 +55,10 @@ function renderGallery(photos) {
 
   // Build gallery — first photo is large, items fade in with stagger
   grid.innerHTML = photos.map((photo, i) => {
-    const width = i === 0 ? 800 : 400;
+    const width = i === 0 ? 600 : 300;
+    const quality = i === 0 ? 70 : 65;
     const cleanSrc = photo.src.startsWith('/') ? photo.src : '/' + photo.src;
-    const src = `/.netlify/images?url=${cleanSrc}&w=${width}&fm=webp&q=80`;
+    const src = `/.netlify/images?url=${cleanSrc}&w=${width}&fm=webp&q=${quality}`;
     return `
       <div class="gallery-item ${i === 0 ? 'gallery-item-large' : ''}" style="animation: fadeInUp 0.5s ease ${(i * 0.05).toFixed(2)}s both;">
         <img src="${src}" alt="${photo.caption || 'Dog at Lindsey\'s Doggy Daycare'}" />
