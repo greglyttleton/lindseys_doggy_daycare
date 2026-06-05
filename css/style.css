@@ -518,6 +518,14 @@ a.testimonial-stars:hover { text-shadow: 0 0 8px rgba(245,166,35,0.7); transform
   padding: 4px 10px;
   border-radius: 50px;
   margin-bottom: 12px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.review-platform:hover {
+  transform: translateY(-1px);
+  filter: brightness(0.96);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 .review-platform--google { background: #f0f4ff; color: #4285F4; }
 .review-platform--facebook { background: #eef3ff; color: #1877F2; }
