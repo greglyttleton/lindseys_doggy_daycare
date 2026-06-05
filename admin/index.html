@@ -85,8 +85,11 @@
         const photosList = photos ? photos.toJS() : [];
 
         const elements = photosList.map((photo, index) => {
-          const path = photo.src ? photo.src.replace(/^\/?images\/gallery\//, '') : '';
-          const src = path ? this.props.getAsset(path).toString() : '';
+          const resolved = photo.src ? this.props.getAsset(photo.src) : null;
+          let src = resolved ? resolved.toString() : '';
+          if (src && !src.startsWith('http') && !src.startsWith('blob:') && !src.startsWith('/')) {
+            src = '/' + src;
+          }
           return h('div', { 
             key: index,
             style: {
