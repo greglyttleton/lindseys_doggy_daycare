@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+Sitemap: https://lindseysdoggydaycare.co.uk/sitemap.xml
