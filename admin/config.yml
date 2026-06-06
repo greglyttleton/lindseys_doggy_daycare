@@ -39,8 +39,6 @@ collections:
               - label: "📸 Upload Photo"
                 name: src
                 widget: image
-                media_folder: images/gallery
-                public_folder: /images/gallery
                 hint: "Click 'Choose an image' to upload from your phone or computer (JPG or PNG recommended)"
               - label: "Caption"
                 name: caption
